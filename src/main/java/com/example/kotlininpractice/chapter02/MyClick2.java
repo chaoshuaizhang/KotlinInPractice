@@ -1,4 +1,4 @@
-package com.example.kotlininpractice.chapter2;
+package com.example.kotlininpractice.chapter02;
 
 public class MyClick2 {
 

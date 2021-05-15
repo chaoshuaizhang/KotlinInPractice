@@ -1,8 +1,9 @@
-package com.example.kotlininpractice.chapter2
+package com.example.kotlininpractice.chapter02
 
-import java.awt.Button
 import java.util.function.Consumer
-
+/*
+* list遍历
+* */
 fun main() {
     val list = listOf("A", "S", "D", "F", "G")
     // 多种方式遍历list集合
