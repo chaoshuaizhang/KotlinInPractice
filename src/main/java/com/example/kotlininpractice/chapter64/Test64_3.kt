@@ -1,6 +1,6 @@
 package com.example.kotlininpractice.chapter64
 
-import com.example.kotlininpractice.chapter54.myDelay
+import com.example.kotlininpractice.extutil.delayNs
 import kotlinx.coroutines.*
 import java.util.concurrent.Executors
 import kotlin.system.measureTimeMillis
@@ -20,13 +20,13 @@ fun main() = runBlocking {
 }
 
 private suspend fun getIntValue1(): Int {
-    myDelay(1)
+    delayNs(1)
     "v1".log()
     return 2
 }
 
 private suspend fun getIntValue2(): Int {
-    myDelay(2)
+    delayNs(2)
     "v2".log()
     return 3
 }
