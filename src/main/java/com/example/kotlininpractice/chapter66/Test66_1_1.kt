@@ -5,16 +5,19 @@ import kotlinx.coroutines.*
 fun main() {
     println("----- 开始执行 -----")
     // getIntValue1Async现在是普通函数，所以不需要在挂起函数中调用
-    val v1 = getIntValue1Async()
-    val v2 = getIntValue2Async()
+    val value1 = getIntValue1Async()
+    val value2 = getIntValue2Async()
     // 注意，假设刚调用完异步函数，其他的业务代码出错了，此时协程是无法停下来的
-    val i = 9 / 0
-    // 因为runBlock是阻塞当前线程的
-    runBlocking {
-        delay(1000000)
-        // await是挂起函数，所以需要在协程或者另一个挂起函数中使用
-        println("v1 + v2 = ${v1.await() + v2.await()}")
+    try {
+        Thread.sleep(100)
+        throw Exception("error happen")
+    }  finally {
+        println("isActive: ${value1.isActive}, isCancelled: ${value1.isCancelled}, isCompleted: ${value1.isCompleted}")
+        println("isActive: ${value2.isActive}, isCancelled: ${value2.isCancelled}, isCompleted: ${value2.isCompleted}")
     }
+    // 因为runBlock是阻塞当前线程的
+    // await是挂起函数，所以需要在协程或者另一个挂起函数中使用
+//    println("v1 + v2 = ${v1.await() + v2.await()}")
     println("----- 执行结束 -----")
 }
 
