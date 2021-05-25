@@ -1,24 +1,20 @@
 package com.example.kotlininpractice.chapter54
 
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import kotlin.system.measureTimeMillis
+import com.example.kotlininpractice.extutil.log
+import kotlinx.coroutines.*
 
-fun main() = runBlocking {
-    val time = {
-        for (i in 0 until 10) {
-            launch {
-                myDelay(1)
-            }
-        }
+fun main() {
+    Job
+    val coroutine = GlobalScope.launch(NonCancellable + Dispatchers.Default) {
+        delay(1000)
+        log("Kotlin Coroutine")
     }
-    println(measureTimeMillis(time))
-}
-
-fun myDelay(i: Int = 1) {
-    val time = System.currentTimeMillis()
-    while (true) {
-        if (System.currentTimeMillis() - time >= 1000 * i) return
+    log("Hello")
+    Thread.sleep(2000)
+    log("Finish")
+    try {
+        throw Exception()
+    } finally {
+        log("isActive=${coroutine.isActive}  isCancel=${coroutine.isCancelled}")
     }
 }
-
