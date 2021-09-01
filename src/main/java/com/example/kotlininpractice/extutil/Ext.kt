@@ -17,3 +17,7 @@ fun delayNs(n: Int) {
 fun log(msg: String = "") {
     println("${LocalDateTime.now()} : $msg  ${Thread.currentThread().name}")
 }
+
+fun Any.mlog() {
+    println("$this   ${Thread.currentThread().threadGroup.name}-${Thread.currentThread().name}")
+}
