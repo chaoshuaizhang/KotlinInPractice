@@ -7,7 +7,13 @@ import kotlin.system.measureTimeMillis
 fun main() = runBlocking {
     "block".log()
     val time = measureTimeMillis {
-        val deferredV1 = async { getIntValue1() }
+        val deferredV1 = async {
+            withContext(Dispatchers.IO) {
+                "io".log()
+                delayNs(10)
+            }
+            getIntValue1()
+        }
         val deferredV2 = async { getIntValue2() }
         val v1 = deferredV1.await()
         val v2 = deferredV2.await()
