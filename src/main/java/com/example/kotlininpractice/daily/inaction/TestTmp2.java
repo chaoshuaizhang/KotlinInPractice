@@ -12,9 +12,3 @@ public class TestTmp2 {
     }
 
 }
-
-
-class M2 extends TestTmp2.M1 {
-    public M2() {
-    }
-}
