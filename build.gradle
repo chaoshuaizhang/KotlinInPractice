@@ -18,4 +18,12 @@ dependencies {
     implementation group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-common', version: '1.4.32'
     // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-core
     implementation group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-core', version: '1.4.3'
+    implementation 'com.xuxueli:xxl-tool:1.2.0'
+    compile 'org.slf4j:slf4j-api:1.7.5'
+    compile 'org.slf4j:slf4j-simple:1.6.4'
+}
+compileKotlin {
+    kotlinOptions {
+        languageVersion = "1.4"
+    }
 }
