@@ -20,6 +20,10 @@ class WithParamsImpl : InterfaceWithParams {
         }
 }
 
+object BuildConfig {
+    val isDebug = false
+}
+
 fun main() {
     val impl1 = WithParamsImpl1("ooo", Random.nextInt(10000))
     val impl = WithParamsImpl()
