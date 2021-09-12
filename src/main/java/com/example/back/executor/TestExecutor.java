@@ -1,6 +1,6 @@
 package com.example.back.executor;
 
-import com.example.kotlininpractice.chapter03.Aq;
+//import com.example.kotlininpractice.chapter03.Aq;
 
 import java.util.ArrayList;
 import java.util.concurrent.Callable;
@@ -25,8 +25,8 @@ public class TestExecutor {
 ////        executor.submit(() -> null);
 //        System.out.println(o);
         synchronized (TestExecutor.class){
-            new Aq().isRight();
-            new Aq().setRight("");
+//            new Aq().isRight();
+//            new Aq().setRight("");
         }
         e.testLock();
     }

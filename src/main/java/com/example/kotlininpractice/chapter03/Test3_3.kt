@@ -4,7 +4,7 @@ fun testMain() {
 }
 fun main(args: Array<String>) {
     println("+")
-    Aq().i()
+//    Aq().i()
 }
 
 fun main2() {
