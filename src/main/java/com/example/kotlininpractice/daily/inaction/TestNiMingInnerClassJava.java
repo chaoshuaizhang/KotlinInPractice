@@ -9,15 +9,16 @@ public class TestNiMingInnerClassJava {
     String createOrder(String orderNo) {
         return "1000";
     }
+
     static int createRefund(String refundNo) {
         return 1001;
     }
 
     public static void main(String[] args) {
-BiFunction<TestNiMingInnerClassJava, String, String> createDTO = TestNiMingInnerClassJava::createOrder;
-createDTO.apply(new TestNiMingInnerClassJava(), "order no");
-Function<String, Integer> createRefund = TestNiMingInnerClassJava::createRefund;
-int apply = createRefund.apply("refund no");
+        BiFunction<TestNiMingInnerClassJava, String, String> createDTO = TestNiMingInnerClassJava::createOrder;
+        createDTO.apply(new TestNiMingInnerClassJava(), "order no");
+        Function<String, Integer> createRefund = TestNiMingInnerClassJava::createRefund;
+        int apply = createRefund.apply("refund no");
         new ArrayList<String>().forEach(System.out::print);
         int tag = 0;
         addService(new IService() {
