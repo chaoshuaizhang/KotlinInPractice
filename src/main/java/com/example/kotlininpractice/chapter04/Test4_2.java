@@ -9,6 +9,5 @@ public class Test4_2 {
         b = a;
     }
     public void testReturnVoid(){
-        // 不能这么写
     }
 }

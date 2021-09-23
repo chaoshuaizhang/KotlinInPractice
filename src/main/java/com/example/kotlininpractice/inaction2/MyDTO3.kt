@@ -1,5 +1,7 @@
 package com.example.kotlininpractice.inaction2
 
+import com.example.kotlininpractice.daily.inaction.委托属性.Person
+import com.google.gson.annotations.SerializedName
 import java.util.*
 import java.util.concurrent.Callable
 import java.util.regex.Pattern
@@ -41,15 +43,26 @@ fun juc() {
         println("ssssssssss")
     }
 }
-
+data class SubSku(
+        @SerializedName("type")
+        val type: String? = "",
+        @SerializedName("sku")
+        val sku: String? = "",
+        @SerializedName("percent")
+        val percent: Int? = 0
+)
 fun main() {
-    Locale.getISOCountries().forEach {
-        val countryTmp = Locale("", it).getDisplayCountry(Locale.ENGLISH)
-//        if (country.equals(countryTmp)) {
-        println("$it     $countryTmp")
-//            return@forEach
-//        }
+    val subSku:SubSku? = null
+    subSku?.type.run {
+        println("=====")
     }
+//    Locale.getISOCountries().forEach {
+//        val countryTmp = Locale("", it).getDisplayCountry(Locale.ENGLISH)
+////        if (country.equals(countryTmp)) {
+//        println("$it     $countryTmp")
+////            return@forEach
+////        }
+//    }
 }
 fun qmain() {
 

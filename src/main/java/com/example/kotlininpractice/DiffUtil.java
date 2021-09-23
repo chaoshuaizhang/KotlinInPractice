@@ -126,7 +126,6 @@
 //        // instead of a recursive implementation, we keep our own stack to avoid potential stack
 //        // overflow exceptions
 //        final List<Range> stack = new ArrayList<>();
-//        // 加入一个（初始）元素
 //        stack.add(new Range(0, oldSize, 0, newSize));
 //
 //        final int max = oldSize + newSize + Math.abs(oldSize - newSize);
