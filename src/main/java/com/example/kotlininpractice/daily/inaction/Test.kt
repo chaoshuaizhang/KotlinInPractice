@@ -1,12 +1,22 @@
 package com.example.kotlininpractice.daily.inaction
 
 import com.example.kotlininpractice.daily.inaction.TestTmp.MyClazz2
+import java.lang.NullPointerException
 
 class TestDTO {
     var sku: String? = null
     var orderNo: String? = null
-    fun aaa(){
 
+    init {
+        aaa()
+    }
+
+    fun aaa(){
+        fun bbb(s:String?){
+            if(s == null) throw NullPointerException()
+        }
+        bbb("a")
+        bbb("b")
     }
 }
 
@@ -51,6 +61,11 @@ infix fun TestDTO.bindSku(sku: String) = this.apply {
 
 // 实现一个给dto绑定订单号的方法
 infix fun TestDTO.bindOrderNo(orderNo: String) = this.apply {
+    this.orderNo = orderNo
+}
+
+// 实现一个给dto绑定订单号的方法
+infix fun TestDTO.build(dto: TestDTO) = this.apply {
     this.orderNo = orderNo
 }
 
@@ -115,6 +130,10 @@ interface MyInterface {
     var tag: String
     val unChangeTag: String
 
+    fun defFun(){
+
+    }
+
     companion object {
         val HTTP_CODE = 200
     }
@@ -122,6 +141,12 @@ interface MyInterface {
 
 class MyImpl(override var tag: String, override val unChangeTag: String)
     : MyInterface {
+    fun String.ext2(){
+
+    }
+    fun aaa(){
+        "".ext2()
+    }
 }
 
 open class B0 {
