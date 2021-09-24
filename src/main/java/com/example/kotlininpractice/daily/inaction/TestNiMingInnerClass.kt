@@ -29,7 +29,7 @@ fun main() {
     })
     addListener(object : IListener22 {
         override fun delete() {
-
+            testMyTag = 9
         }
     })
 

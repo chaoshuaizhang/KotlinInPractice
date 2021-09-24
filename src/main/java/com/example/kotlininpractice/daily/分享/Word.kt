@@ -1,4 +1,4 @@
-package com.example.kotlininpractice.daily.分享
+package com.example.test.分享
 
 class Word {
     var word: String? = null

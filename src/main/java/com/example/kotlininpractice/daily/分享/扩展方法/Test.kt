@@ -1,6 +1,7 @@
-package com.example.kotlininpractice.daily.分享.扩展方法
+package com.example.test.分享.扩展方法
 
-import com.example.kotlininpractice.daily.分享.Word
+import com.example.test.分享.Word
+
 
 fun Word.print() {
     println("$word : $trans")

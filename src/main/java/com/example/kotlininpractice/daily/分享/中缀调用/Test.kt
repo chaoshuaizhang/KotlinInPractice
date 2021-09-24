@@ -1,6 +1,7 @@
-package com.example.kotlininpractice.daily.分享.中缀调用
+package com.example.test.分享.中缀调用
 
-import com.example.kotlininpractice.daily.分享.Word
+import com.example.test.分享.Word
+
 
 // 实现一个给Word绑定单词的方法
 infix fun Word.bindWord(word: String) = this.apply {

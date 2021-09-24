@@ -1,14 +1,21 @@
-package com.example.kotlininpractice.daily.分享.局部函数
+package com.example.test.分享.局部函数
 
 class Test {
-    private fun aaa() {
-        fun bbb(s: String?) {
-            if (s == null) throw NullPointerException()
-            s.length.takeIf { true }
-            fun ccc() {}
+    fun fetchSubConfigValue(key: String, callback: (String) -> Unit) {
+        fun value() = request("key")
+        value().let {
+            if (it.trim().isEmpty()) {
+                repeatRefresh { callback(value()) }
+            } else {
+                callback(it)
+            }
         }
-        bbb("ab")
-        bbb("b")
+    }
+
+    private fun request(key: String) = ""
+
+    private fun repeatRefresh(callback: (String) -> Unit){
+        callback.invoke("value")
     }
 }
 
