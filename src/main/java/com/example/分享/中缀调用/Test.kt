@@ -15,4 +15,4 @@ infix fun Word.bindTrans(trans: String) = this.apply {
 val word = Word() bindWord "hello" bindTrans "你好"
 // 改成这样就类似Builder建造者了
 val word2 = Word().bindWord("").bindTrans("")
-1
+2
