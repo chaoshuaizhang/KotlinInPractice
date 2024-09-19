@@ -2,8 +2,12 @@ package testkotlin.coroutine
 
 import kotlinx.coroutines.*
 import java.time.LocalDateTime
+import java.util.concurrent.TimeoutException
 
-fun main() = testTimeout4()
+fun main() {
+    testTimeout5()
+    Thread.sleep(10_000)
+}
 
 fun testTimeout1() = runBlocking {
 // 注意，超时会抛出[TimeoutCancellationException]异常
@@ -78,4 +82,21 @@ fun testTimeout4() {
     }
     // Outside of runBlocking all coroutines have completed
     println(acquired) // Print the number of resources still acquired
+}
+
+fun testTimeout5() {
+    runBlocking(CoroutineExceptionHandler { _, _ ->
+        log("========")
+    }) {
+        log("-----")
+        try {
+            withTimeout(900) { // Timeout of 60 ms
+                delay(2_000)
+                return@withTimeout
+            }
+        } finally {
+
+        }
+        log("+++++")
+    }
 }

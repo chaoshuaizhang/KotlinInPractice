@@ -1,11 +1,12 @@
 package testkotlin.coroutine
 
 import kotlinx.coroutines.*
+import org.jetbrains.annotations.TestOnly
 import java.time.LocalDateTime
 
 private lateinit var scope: CoroutineScope
 
-fun main() = cancel4()
+fun main() = cancel6()
 
 fun main1() = runBlocking {
     GlobalScope.launch {
@@ -122,12 +123,43 @@ fun cancel4() = runBlocking {
     }
     delay(1300L) // 延迟一段时间
     log("main: I'm tired of waiting!")
-    job.cancelAndJoin() // 取消该作业并且等待它结束
+    // 取消该作业并且等待它结束
+    job.cancelAndJoin()
     log("main: Now I can quit.")
 }
 
-private fun log(msg: Any?) {
-    val now = LocalDateTime.now()
-    println("${now.minute}:${now.second} " + Thread.currentThread().name + ": $msg")
+// 用完就取消的协程 - 自创的优雅方式
+fun cancel5() = runBlocking {
+    fun real(coroutineScope: CoroutineScope) {
+        coroutineScope.launch {
+            log("-----")
+            delay(1000)
+            log("-----")
+            coroutineScope.cancel()
+            withContext(Dispatchers.IO) {
+                log("-----")
+            }
+        }
+    }
+
+    val scope = CoroutineScope(Dispatchers.IO)
+    real(scope)
+    delay(2000)
+    log("${scope.isActive}")
+    scope.launch {
+        log("OK?")
+    }
+    Unit
 }
 
+fun cancel6() = runBlocking {
+    val job = launch {
+        log("start")
+        while (true) {
+
+        }
+        log("end")
+    }
+    job.join()
+    job.cancel()
+}
